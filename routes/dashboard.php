@@ -1,9 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\Dashboard\SkillController;
+use App\Http\Controllers\Dashboard\ProjectController;
+use App\Http\Controllers\Dashboard\LanguageController;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\EducationController;
 use App\Http\Controllers\Dashboard\ExperienceController;
-
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
@@ -11,15 +14,15 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
 
     Route::resource('/experiences', ExperienceController::class);
 
-    Route::get('/educations', [DashboardController::class, 'educations'])->name('educations');
+    Route::resource('/educations', EducationController::class);
 
-    Route::get('/skills', [DashboardController::class, 'skills'])->name('skills');
+    Route::resource('/skills', SkillController::class);
 
-    Route::get('/projects', [DashboardController::class, 'projects'])->name('projects');
+    Route::resource('/projects', ProjectController::class);
 
     Route::get('/messages', [DashboardController::class, 'messages'])->name('messages');
 
-    Route::get('/languages', [DashboardController::class, 'languages'])->name('languages');
+    Route::resource('/languages', LanguageController::class);
 
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
 });

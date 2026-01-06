@@ -18,16 +18,16 @@
                     <x-nav-link :href="route('experiences.index')" :active="request()->routeIs('experiences.index')">
                         {{ __('Experiences') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('educations')" :active="request()->routeIs('educations')">
+                    <x-nav-link :href="route('educations.index')" :active="request()->routeIs('educations.index')">
                         {{ __('Educations') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('skills')" :active="request()->routeIs('skills')">
+                    <x-nav-link :href="route('skills.index')" :active="request()->routeIs('skills')">
                         {{ __('Skills') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('languages')" :active="request()->routeIs('languages')">
+                    <x-nav-link :href="route('languages.index')" :active="request()->routeIs('languages')">
                         {{ __('Languages') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('projects')" :active="request()->routeIs('projects')">
+                    <x-nav-link :href="route('projects.index')" :active="request()->routeIs('projects')">
                         {{ __('Projects') }}
                     </x-nav-link>
                     <x-nav-link :href="route('messages')" :active="request()->routeIs('messages')">
