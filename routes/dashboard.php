@@ -2,12 +2,14 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\ExperienceController;
 
 
 Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
 
-    Route::get('/experiences', [DashboardController::class, 'experiences'])->name('experiences');
+
+    Route::resource('/experiences', ExperienceController::class);
 
     Route::get('/educations', [DashboardController::class, 'educations'])->name('educations');
 

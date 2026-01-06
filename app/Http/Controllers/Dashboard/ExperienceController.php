@@ -1,0 +1,110 @@
+<?php
+
+namespace App\Http\Controllers\Dashboard;
+
+use App\Models\Experience;
+use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+
+class ExperienceController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     */
+    public function index()
+    {
+        $experiences = Experience::latest()->paginate(10);
+        return view('dashboard.experiences.index', compact('experiences'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return view('dashboard.experiences.create');
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+       $request->validate([
+            'title' => 'required|string|max:255',
+           'company' => 'required|string|max:255',
+           'location' => 'required|string|max:255',
+           'start_date' => 'required|date',
+           'end_date' => 'nullable|date|after_or_equal:start_date',
+           'description' => 'nullable|string',
+       ]);
+
+       Experience::create(
+        [
+            'title' => $request->title,
+            'company' => $request->company,
+            'location' => $request->location,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'description' => $request->description,
+        ]
+       );
+
+        flash()->success('Experience added successfully.');
+
+       return redirect()->route('experiences.index');
+    }
+
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
+    {
+        //
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(Experience $experience)
+    {
+        return view('dashboard.experiences.edit', compact('experience'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, Experience $experience)
+    {
+        $request->validate([
+            'title' => 'required|string|max:255',
+            'company' => 'required|string|max:255',
+            'location' => 'required|string|max:255',
+            'start_date' => 'required|date',
+            'end_date' => 'nullable|date|after_or_equal:start_date',
+            'description' => 'nullable|string',
+        ]);
+
+        $experience->update([
+            'title' => $request->title,
+            'company' => $request->company,
+            'location' => $request->location,
+            'start_date' => $request->start_date,
+            'end_date' => $request->end_date,
+            'description' => $request->description,
+        ]);
+
+        flash()->success('Experience updated successfully.');
+        return redirect()->route('experiences.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(Experience $experience)
+    {
+        $experience->delete();
+        flash()->warning('Experience deleted successfully.');
+        return redirect()->route('experiences.index');
+    }
+}
