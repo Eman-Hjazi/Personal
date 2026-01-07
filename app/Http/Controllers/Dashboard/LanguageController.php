@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\Dashboard;
 
-use App\Models\Skill;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Models\language;

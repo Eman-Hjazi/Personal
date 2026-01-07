@@ -21,8 +21,10 @@ Route::prefix('dashboard')->middleware(['auth', 'verified'])->group(function () 
     Route::resource('/projects', ProjectController::class);
 
     Route::get('/messages', [DashboardController::class, 'messages'])->name('messages');
+    Route::get('/messages/{message}', [DashboardController::class, 'messages_show'])->name('messages.show');
 
     Route::resource('/languages', LanguageController::class);
 
     Route::get('/settings', [DashboardController::class, 'settings'])->name('settings');
+    Route::put('/settings', [DashboardController::class, 'settings_save']);
 });
