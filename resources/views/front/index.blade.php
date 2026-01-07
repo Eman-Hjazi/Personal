@@ -155,9 +155,23 @@
                                 <p class="lead fw-light mb-4">My name is Start Bootstrap and I help brands grow.</p>
                                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit dolorum itaque qui unde quisquam consequatur autem. Eveniet quasi nobis aliquid cumque officiis sed rem iure ipsa! Praesentium ratione atque dolorem?</p>
                                 <div class="d-flex justify-content-center fs-2 gap-4">
-                                    <a class="text-gradient" href="#!"><i class="bi bi-twitter"></i></a>
-                                    <a class="text-gradient" href="#!"><i class="bi bi-linkedin"></i></a>
-                                    <a class="text-gradient" href="#!"><i class="bi bi-github"></i></a>
+                                    @dump($settings)
+                                 @if ($settings['facebook'])
+                                                            <a class="text-gradient" href="{{ $settings['facebook'] }}"  target="_blank"><i class="bi bi-facebook"></i></a>
+                                 @endif
+
+                                 @if ($settings['twitter'])
+                                      <a class="text-gradient" href="{{ $settings['twitter'] }}" target="_blank"><i class="bi bi-twitter" ></i></a>
+                                 @endif
+
+                                 @if ($settings['linkedin'])
+                                      <a class="text-gradient" href="{{ $settings['linkedin'] }}" target="_blank"><i class="bi bi-linkedin" ></i></a>
+                                 @endif
+
+                                 @if ($settings['github'])
+                                      <a class="text-gradient" href="{{ $settings['github'] }}" target="_blank"><i class="bi bi-github"  ></i></a>
+                                 @endif
+
                                 </div>
                             </div>
                         </div>

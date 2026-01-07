@@ -33,10 +33,10 @@
                         </div>
 
                                <div class="mb-4">
-                            <x-input-label for="githup" :value="__('Githup')" />
-                            <x-text-input id="githup" class="block mt-1 w-full" type="text" name="githup"
-                                :value="old('githup', $settings['githup'] ?? '')"  autocomplete="githup" />
-                            <x-input-error :messages="$errors->get('githup')" class="mt-2" />
+                            <x-input-label for="github" :value="__('GitHub')" />
+                            <x-text-input id="github" class="block mt-1 w-full" type="text" name="github"
+                                :value="old('github', $settings['github'] ?? '')"  autocomplete="github" />
+                            <x-input-error :messages="$errors->get('github')" class="mt-2" />
                         </div>
 
                                <div class="mb-4">
