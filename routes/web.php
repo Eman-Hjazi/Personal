@@ -12,6 +12,7 @@ Route::get('/projects',[FrontController::class,'projects'])->name('front.project
 
 Route::get('/contact',[FrontController::class,'contact'])->name('front.contact');
 
+Route::post('/contact',[FrontController::class,'contact_mail']);
 
 
 
